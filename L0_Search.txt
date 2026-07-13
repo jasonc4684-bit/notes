@@ -1,7 +1,7 @@
 - Lecture Date: June 15-16
 - Projects in 2 working days
 - Link to lecture/video: https://video.cs50.io/WbzNRTTrX0g?screen=0Towr-pBuzw&start=1857
-- Link to slides/notes: https://cs50.harvard.edu/ai/notes/0/    - contains codes for optimal solution(check)
+- Link to slides/notes: https://cs50.harvard.edu/ai/notes/0/ - contains code for optimal solution (check)
 
 Key idea
     AI's idea-
@@ -15,42 +15,42 @@ For each idea, fill in:
     Uncertainty
     Optimization solutions
     Machine learning from data
-    Neural netowrks
+    Neural networks
     Human language
 
-- Spefic for Lecture 0 is SEARCH
+- Specific for Lecture 0 is SEARCH
 
 Terminology-
 
-    Agent- entity/person that perceives its environment/surrounding and at an efficient way
+    Agent- entity/person that perceives its environment/surroundings and acts in an efficient way
 
-    State- Configuration/ arrangement of the agent and its environment
+    State- Configuration/arrangement of the agent and its environment
 
-    Initial state- state that agent begins
+    Initial state- state that agent begins in
 
     Actions- choices that can be made in a state
-        ACTIONS(s), s is some states in the actions, returns the sets of actions that can be excecuted in state s
+        ACTIONS(s), s is some state, returns the set of actions that can be executed in state s
             Such as moving tiles has four actions, up, down, left, and right
 
-    Transition model- state results from performing any action in any state
+    Transition model- state that results from performing any action in any state
         RESULT(s,a), s is state and a is action, returns the state resulting from performing action a in state s
             sliding tiles to the left, action, on tiles game, state, will cause the state to shift
 
     State space- all reachable states from initial state by any sequence of actions
 
-    Goal test- determing the goal state currently
+    Goal test- determining the goal state currently
 
     Path cost- numerical cost associated with a given path
 
     Optimal solution- solution with the lowest path cost among all
 
-    Node- a data structure tracks a state, parent(og node), an action, and a path cost
+    Node- a data structure that tracks a state, parent (original node), an action, and a path cost
 
-    Frontier- possible directions that not yet visited
+    Frontier- possible directions that have not yet been visited
 
-    Uninformed search- search strategyy that uses no problem-specific knowledge - such as DFS and BFS
+    Uninformed search- search strategy that uses no problem-specific knowledge - such as DFS and BFS
 
-    Informed search- search strategyy that uses problem-specific knowledge to find solutions more efficiently
+    Informed search- search strategy that uses problem-specific knowledge to find solutions more efficiently
 
 Approach for search-
 
@@ -70,45 +70,45 @@ Approach for search-
         add the node to the explored set
         else expand node, search other possible nodes that are not in the explored set or frontier
 
-    Possible errors/ solutions-
+    Possible errors/solutions-
 
         Nodes can go back and forth- infinite loop
-            Track the path, if one fails, eliminates that path/node
+            Track the path, if one fails, eliminate that path/node
 
 Data structure types-
 
-    Stack- last-in first-out/explore, such as DFS or pop()
+    Stack- last-in first-out explore, such as DFS or pop()
 
-    Queue- first-in first-out/explore, such as BFS
+    Queue- first-in first-out explore, such as BFS
 
-Seach types-
+Search types-
 
     Depth-First Search- always explore the deepest node in the frontier until the end,
         not always optimal for complex maze,
-        one direction not guarantee to be the optimal
+        one direction not guaranteed to be the optimal
 
     Breadth-First Search- always explore the shallowest node in the frontier,
-        explore all closest path simutaneouly
-        more memory but better at complex maze, except the goal is closer to the inital state
+        explore all closest paths simultaneously,
+        more memory but better at complex maze, except the goal is closer to the initial state
 
-    Greedy best-first search- expands the node using heuritstic thinking on the closest path
-        Uses Manhattan distance to the goal, directions distance
-        A good heurisitc = better,
+    Greedy best-first search- expands the node using heuristic thinking on the closest path
+        Uses Manhattan distance to the goal, directional distance
+        A good heuristic = better,
         still not always optimal if the closer path has multiple turns
 
-    A* search- algorithm that expands node with lowest value of (cost to reach)-current node values
-                                                                                 + (estimate cost to goal)- heuritic
+    A* search- algorithm that expands node with lowest value of (cost to reach current node)
+                                                                + (estimated cost to goal)
         similar to GBFS, but when the next g(n)+h(n) > than previous path cost, it chooses the previous path
-        higher memeory use
+        higher memory use
         optimal if
-            is admissible(never overestimates the cost) and consistent ( shouldn't be more than heuristic)
+            is admissible (never overestimates the cost) and consistent (shouldn't be more than heuristic)
 
     Adversarial search- opposite objective in preventing our node to reach the goal
 
-Minimax- Use to against adversarial search
+Minimax- Used against adversarial search
     MAX(X)- trying to maximize the result
     MIN(O)- trying to minimize the result
-    Each side uses other person's decision, choosing the optimal solution
+    Each side uses the other person's decision, choosing the optimal solution
 
     #Pseudocode for Max
     function Max_value(state):
@@ -116,8 +116,8 @@ Minimax- Use to against adversarial search
         return utility(state)
     value=-∞
     for action in ACTIONS(state):
-        value=MAX(value, Min-value(Result(state, action))),     (Min-Value is what opponents can best do next,
-                                                                                which we pick the best result)
+        value=MAX(value, Min_value(Result(state, action))),     (Min_value is what opponents can best do next,
+                                                                                 which we pick the best result)
     return value
 
     #Pseudocode for Min
@@ -126,15 +126,16 @@ Minimax- Use to against adversarial search
         return utility(state)
     value=∞
     for action in ACTIONS(state):
-        value=MIN(value, MAX-value(Result(state, action))),     (Max-Value is what opponents can best do next,
-                                                                                which we pick the lowest result)
+        value=MIN(value, Max_value(Result(state, action))),     (Max_value is what opponents can best do next,
+                                                                                 which we pick the lowest result)
     return value
 
     * Alpha-Beta Pruning (to optimize)-
         if the previous solution is a "4", and next result returns 3,
                                                             we can skip it, as the state will be at most 3
-Depth_limited Minimax-
-    Instead of unlimited minimax calculaion of future moves, stop after a certain point.
+
+Depth-limited Minimax-
+    Instead of unlimited minimax calculation of future moves, stop after a certain point.
 
 Evaluation function-
     estimates the expected utility, score, of the game from a given state
