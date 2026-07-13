@@ -82,3 +82,6 @@ For each idea, fill in:
         when agent performs action, two outcomes: reward and punishment
 
         Markov decision process - model for decision-making, representing states, actions, and their rewards
+            Set of states S 
+            set of actions Actions(s)
+            Transition model P(s' | s, a), probability at next state given current state and action
