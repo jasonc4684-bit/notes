@@ -80,6 +80,7 @@ For each idea, fill in:
 
         Agent will be at a state given by environment
         when agent performs action, two outcomes: reward and punishment
+            Agent has no infomation at initial state
 
         Markov decision process - model for decision-making, representing states, actions, and their rewards
             Set of states S 
