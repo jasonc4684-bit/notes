@@ -85,3 +85,4 @@ For each idea, fill in:
             Set of states S 
             set of actions Actions(s)
             Transition model P(s' | s, a), probability at next state given current state and action
+            Reward function R(s, a, s'), reward on this process
