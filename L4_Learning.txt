@@ -10,7 +10,7 @@
 For each idea, fill in:
 - Concept name:
 
-# Terms-
+# Terms
 
     Supervised Learning - given access to input output pair, learn a function to map inputs to outputs
 
@@ -23,23 +23,23 @@ For each idea, fill in:
                     such as Rain if C0(some other factors) + W1C1 + W2C2 >= 0, else opposite
                     or                  hw(x)            w * x >= 0
 
-                Perceptron Learning Rule/weight update - Wi = Wi + a(y - Hw(X)) +Xi ,
+                Perceptron Learning Rule/weight update - Wi = Wi + a(y - Hw(X)) + Xi ,
                                                             a is learning rate, y - Hw(X) = actual value - estimate
 
-                Threshold function (hard)- A certain part of the graph where the output will change suddenly from the dot-product
-                    Only possible of two outputs 0 and 1
+                Threshold function (hard) - A certain part of the graph where the output will change suddenly from the dot-product
+                    Only possible with two outputs: 0 and 1
 
-                Logistic function (soft) - A curved-looked graph where the output changed by dot-product, less absolute
+                Logistic function (soft) - A curved graph where the output changes by dot-product, less absolute
                     0 <= C <= 1
 
                 1. K-nearest-neighbor classification (variant k added) -
                         choose the category of the input based on k-range most common knowledge table/info
 
-                    Downside - slow in organizing and measure data
+                    Downside - slow in organizing and measuring data
 
                 2. Linear approach - a line separating two data, only for clean data
 
-                3. Support Vector Machines - Utilized maximum margin separator, boundary that maximizes the distance between data
+                3. Support Vector Machines - Utilizes maximum margin separator, boundary that maximizes the distance between data
                     Such as a circle instead of a straight line
 
 
@@ -51,13 +51,13 @@ For each idea, fill in:
             Loss function - expresses how poorly our hypothesis performs
 
                 0-1 loss function -
-                    L(actual, predicted) = 0 if actual = predicted 1 otherwise
+                    L(actual, predicted) = 0 if actual = predicted, 1 otherwise
 
                 L1 loss function -
                     L(actual, predicted) = |actual - predicted|
 
                 L2 loss function -
-                    L(actual, predicted) = (actual - predicted)^2 , more harsh and penalize
+                    L(actual, predicted) = (actual - predicted)^2 , more harsh and penalizes
 
 
 
@@ -76,4 +76,4 @@ For each idea, fill in:
         .predict() to test
         X_1, X_2, Y_1, Y_2 = train_test_split(X_label, Y_label, test_size= )
 
-    Reinforcement Learning - Learning past experiences, rewards or punishment, to take future actions 
+    Reinforcement Learning - Learning from past experiences, rewards or punishment, to take future actions
