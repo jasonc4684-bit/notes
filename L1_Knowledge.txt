@@ -9,133 +9,129 @@ Key idea
 For each idea, fill in:
 - Concept name:
 
-Terms-
+Terms
 
-    knowledge_based agents- agents that reason by operating on internal representations of knowledge
-        - Uses known information in producing conclusion/ information
+    knowledge-based agents - Agents that reason by operating on internal representations of knowledge.
+        - Use known information to produce conclusions or new information.
 
-    Sentence- an assertion about the world in a knowledge representation language
-        such as Propositional Logic- statement about the world
+    Sentence - An assertion about the world in a knowledge-representation language,
+        such as propositional logic. A statement about the world.
 
-    Model- assigns a truth value, true or false, for possible world.
+    Model - Assigns a truth value (true or false) for a possible world.
 
-    Knowledge base- a set of sentences concluded by knowledge-based agents
+    Knowledge base - A set of sentences held by a knowledge-based agent.
 
-    Entailment- a|= b,
-        Every possible world, if alpha == true, beta is true
+    Entailment - alpha |= beta:
+        In every possible world where alpha is true, beta is also true.
 
-    Inference- the process of deriving new sentences from old ones
+    Inference - The process of deriving new sentences from old ones.
 
-    Knowledge engineering- the process in determining which symbols and logic to use and represent it logically
+    Knowledge engineering - The process of deciding which symbols and logic to use and how to represent knowledge.
 
-    Clause- a disjunction/numerous thing "or"/ of literals, propositional/ or opposite symbols- (conjunction is "and")
+    Clause - A disjunction ("or") of literals (propositional symbols or their negations). (Conjunction is "and".)
 
-    Conjunctive normal form- logical sentence that is a conjunction of clauses
+    Conjunctive normal form (CNF) - A logical sentence that is a conjunction of clauses.
 
-Logical Connectives of computer's conclusion
+Logical connectives used in the computer's reasoning
 
-    Symbols- either true or false
+    Symbols - Each symbol is either true or false.
 
-        --| not  is  opposite
-                Not \not raining\ will be raining
+        --|  not  (negation)  — the opposite
+                Example: --| raining  means "not raining"
 
-        ^ is and   for more than one values
-                false and true returns false
+        ^  and  (conjunction)
+                Example: false ^ true returns false
 
-          (down) ^ is or, v
-                false or true returns true,
-                    only returns false when both are false
+        v  or  (disjunction)
+                Example: false v true returns true
+                Only returns false when both are false
 
-             --> is implication / implies, if --> then
-                    if P, to be transfer, is false, Q, the statement stays True
-                    for true P to false Q, returns false
+        -->  implication
+                If P --> Q, the implication is false only when P is true and Q is false
 
-                <--> is biconditional/ both direction
-                    such as if and only if
-                        returns true only both P and Q are the same
+        <-->  biconditional (iff)
+                True when P and Q have the same truth value
 
-Checking types-
+Checking entailment / models
 
-    Model Checking- to satisfy entailment
-                    enumerate/mention all possible models, which is less efficient
-                    if every model the KB is true, then KB entail a
-                    else KB does not entail a
-Inference Rules-
+    Model checking - To test entailment by enumerating all possible models (less efficient).
+                    If in every model where the KB is true the query is also true, then KB entails the query.
 
-    Modus Ponens-
-        Use a line, the top for knowledge and bottom for inference
-        if a-->b and given a is true, then inference to beta
+Inference rules
 
-    And elimination-
-        same line, but if the top is a ^ b, if a is true, then b must also be true
+    Modus Ponens -
+        If A --> B and A is true, then infer B.
 
-    Double negation elimination-
-        same line, but if the top is --|(--|a) or not not a, is just a
+    And elimination -
+        From A ^ B, infer A (or infer B).
 
-    Implication elimination-
-        same line, a-->b, then it must be --| a or b
+    Double negation elimination -
+        --|(--|A) is equivalent to A.
 
-    Biconditional elimination-
-        line, if a <--> b, then it must be  (a->b) and (b->a)
+    Implication elimination -
+        A --> B is equivalent to --|A v B.
 
-    De Morgan's Law- turn "and" to "or" by distributing the "not",          or turn "or" to "and"
-        --| (a ^ b), then  --| a or --| b                                     --| a ^ --| b
+    Biconditional elimination -
+        A <--> B is equivalent to (A --> B) ^ (B --> A).
 
-    Distributive property
+    De Morgan's laws -
+        --|(A ^ B) is equivalent to (--|A) v (--|B)
+        --|(A v B) is equivalent to (--|A) ^ (--|B)
 
-    conflict-
-        if there's 2 clauses, one's p and other's --| p, then it resolved and their other "or" must be true
+    Distributive property -
+        Use to transform between nested conjunctions and disjunctions when converting to CNF.
 
-Theorem Proving-
+    Conflict (complementary literals) -
+        If one clause contains P and another contains --|P, resolving them forces the other disjuncts to be true (or leads to contradiction).
 
-    inital state: starting knowledge base
-    actions- inference rules
-    transition model: new knowledge base after inference
-    goal test: check statement we're trying to prove
-    path cost function: number of steps in proof
+Theorem proving
 
-Conversion to CNF (conjunction normal form)-
+    Initial state: starting knowledge base
+    Actions: inference rule applications
+    Transition model: new knowledge base after inference
+    Goal test: check whether the target statement has been proved
+    Path cost function: number of steps in the proof
 
-    eliminates biconditinals, turn a<-->b to (a-->b) ^ (b-->a)
-    eliminates implications, turn a-->b to --| a "or" b
-    move --| (not) by using De Morgan's Law
-    Use distributive law for v (or)
-        example-
-            (P V(or) Q) --> S
-            --| (P v Q) v S
-            (--| P ^ --| Q) v s
-            (--| P v s) ^ (--| Q v s)
+Conversion to CNF (Conjunctive Normal Form)
 
-    Duplicated symbols will only appeared once, eliminate redundant (Q v W v E v E) is (Q v W v E )
-    If only two conflict clauses, p , --| p, then it is a false empty clause
+    - Eliminate biconditionals: A <--> B  ->  (A --> B) ^ (B --> A)
+    - Eliminate implications: A --> B  ->  --|A v B
+    - Move negation inward using De Morgan's laws (push nots to literals)
+    - Distribute v over ^ using distributive law to obtain conjunction of disjunctions
+        Example:
+            (P v Q) --> S
+            becomes --|(P v Q) v S
+            which is (--|P ^ --|Q) v S
+            which distributes to (--|P v S) ^ (--|Q v S)
+    - Remove duplicate literals in a clause: (Q v W v E v E) -> (Q v W v E)
+    - If you derive both P and --|P as unit clauses, that yields the empty clause (contradiction).
 
-Resolution, trying to reach a contradiction-
+Resolution (proof by contradiction)
 
-    Determining if KB entails a:
-    convert to KB ^ --| a to CNF
-    a loop continues if we can use resolution to produce new clause
-        if we produce an empty clause, it's false or a contradiction, then KB must entails a
-        else, no entailement
+    To determine if KB entails A:
+    - Convert KB ^ --|A to CNF.
+    - Repeatedly apply resolution to derive new clauses.
+    - If you derive the empty clause, the set is unsatisfiable, so KB entails A.
+    - If no empty clause can be derived, entailment is not proven.
 
-First-Order Logic, more representation of knowledge-
+First-Order Logic (for richer knowledge representation)
 
-    constant and predicate, holds true or false for constant, symbol
-    predicate(constant)
+    - Contains constants and predicates; predicates applied to constants produce truth values.
+        Example: predicate(constant)
 
-    2 quantifiers-
-        Universal Quantification- express true statements for all values    uses upsidedown A x
-            for all objects x, if x== something, then x != others
+    Quantifiers:
+        Universal quantifier (∀) — true for all values.
+        Existential quantifier (∃) — true for at least one value.
 
-        Existential Quantification- express at least one value holds true   uses backward E x
-            for one object x, it holds true for certain criterias eventually
+Notes / tips
 
-Clue-
-    Uses (down)^ to list all possible knowledge
-        for known value, use --| to exclude the knowledge from the check
+    - Use conjunctions (^) to list multiple pieces of knowledge.
+    - Use negation (--|) to express exclusion.
 
-Logic puzzles-
-    if something -> soemthing, then something is --| some-else
-    elif something occupied something, some-else can't occupied that
+Logic puzzles
 
-Some useful codes-
-    termcolor.cprint({(message)}, "(color)") for colored text
+    - If something implies something else, use negation to exclude contradictory possibilities.
+    - If an object occupies a position, others cannot occupy the same position.
+
+Some useful code
+    - termcolor.cprint(message, "color")  for colored text
