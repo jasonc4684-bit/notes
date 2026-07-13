@@ -12,34 +12,34 @@ For each idea, fill in:
 
 # Terms
 
-    Supervised Learning - given access to input output pair, learn a function to map inputs to outputs
+    Supervised Learning - given access to an input-output pair, learn a function to map inputs to outputs
 
-        Classification - given input, mapping discrete category
+        Classification - given input, mapping to a discrete category
 
             Such as a table with data,
             which can be the function's parameters, f(C1, C2) or hw(w is the weight) (C1, C2) to hypothesize
 
-                The weight for C1 and C2 will vary and hypothesize,
+                The weight for C1 and C2 will vary, and hypothesize,
                     such as Rain if C0(some other factors) + W1C1 + W2C2 >= 0, else opposite
                     or                  hw(x)            w * x >= 0
 
                 Perceptron Learning Rule/weight update - Wi = Wi + a(y - Hw(X)) + Xi ,
                                                             a is learning rate, y - Hw(X) = actual value - estimate
 
-                Threshold function (hard) - A certain part of the graph where the output will change suddenly from the dot-product
+                Threshold function (hard) - A certain part of the graph where the output will change suddenly from the dot product
                     Only possible with two outputs: 0 and 1
 
-                Logistic function (soft) - A curved graph where the output changes by dot-product, less absolute
+                Logistic function (soft) - A curved graph where the output changes by dot product, less absolute
                     0 <= C <= 1
 
                 1. K-nearest-neighbor classification (variant k added) -
-                        choose the category of the input based on k-range most common knowledge table/info
+                        Choose the category of the input based on the k-range most common knowledge table/info
 
                     Downside - slow in organizing and measuring data
 
-                2. Linear approach - a line separating two data, only for clean data
+                2. Linear approach - a line separating two datasets, only for clean data
 
-                3. Support Vector Machines - Utilizes maximum margin separator, boundary that maximizes the distance between data
+                3. Support Vector Machines - Utilizes a maximum margin separator, a boundary that maximizes the distance between data
                     Such as a circle instead of a straight line
 
 
@@ -65,7 +65,7 @@ For each idea, fill in:
 
     Regularization - cost(h) = loss(h) + complexity(h) * P, parameter for weights/penalize
 
-    Holdout cross-validation - splitting data into training and test set
+    Holdout cross-validation - splitting data into a training and test set
 
     k-fold cross-validation - splitting data into k sets and experimenting k times
 
@@ -76,4 +76,4 @@ For each idea, fill in:
         .predict() to test
         X_1, X_2, Y_1, Y_2 = train_test_split(X_label, Y_label, test_size= )
 
-    Reinforcement Learning - Learning from past experiences, rewards or punishment, to take future actions
+    Reinforcement Learning - Learning from past experiences, rewards | punishment, to take future actions
