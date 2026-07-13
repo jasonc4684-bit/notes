@@ -1,0 +1,79 @@
+- Lecture Date: June 12-13
+- Projects: 3-4 working days
+- Link to lecture/video: https://cs50.harvard.edu/ai/weeks/4/    -
+- Link to slides/notes:  https://cs50.harvard.edu/ai/notes/4/    - codes (with scikit-learn) for symbols and model check
+
+# Key idea
+
+    AI's Learning
+
+For each idea, fill in:
+- Concept name:
+
+# Terms-
+
+    Supervised Learning - given access to input output pair, learn a function to map inputs to outputs
+
+        Classification - given input, mapping discrete category
+
+            Such as a table with data,
+            which can be the function's parameters, f(C1, C2) or hw(w is the weight) (C1, C2) to hypothesize
+
+                The weight for C1 and C2 will vary and hypothesize,
+                    such as Rain if C0(some other factors) + W1C1 + W2C2 >= 0, else opposite
+                    or                  hw(x)            w * x >= 0
+
+                Perceptron Learning Rule/weight update - Wi = Wi + a(y - Hw(X)) +Xi ,
+                                                            a is learning rate, y - Hw(X) = actual value - estimate
+
+                Threshold function (hard)- A certain part of the graph where the output will change suddenly from the dot-product
+                    Only possible of two outputs 0 and 1
+
+                Logistic function (soft) - A curved-looked graph where the output changed by dot-product, less absolute
+                    0 <= C <= 1
+
+                1. K-nearest-neighbor classification (variant k added) -
+                        choose the category of the input based on k-range most common knowledge table/info
+
+                    Downside - slow in organizing and measure data
+
+                2. Linear approach - a line separating two data, only for clean data
+
+                3. Support Vector Machines - Utilized maximum margin separator, boundary that maximizes the distance between data
+                    Such as a circle instead of a straight line
+
+
+        Regression - given input, mapping continuous value/output
+
+            ex. f(advertising) = 6000 profits
+                h(advertising) the profits from different advertising value
+
+            Loss function - expresses how poorly our hypothesis performs
+
+                0-1 loss function -
+                    L(actual, predicted) = 0 if actual = predicted 1 otherwise
+
+                L1 loss function -
+                    L(actual, predicted) = |actual - predicted|
+
+                L2 loss function -
+                    L(actual, predicted) = (actual - predicted)^2 , more harsh and penalize
+
+
+
+    Over-fitting - A model that fits too closely to a data set and may fail to generalize to future data
+
+    Regularization - cost(h) = loss(h) + complexity(h) * P, parameter for weights/penalize
+
+    Holdout cross-validation - splitting data into training and test set
+
+    k-fold cross-validation - splitting data into k sets and experimenting k times
+
+    scikit-learn modules for test and train, for quicker data swap
+
+        zip() allows inspecting two different lists
+        .fit() for training
+        .predict() to test
+        X_1, X_2, Y_1, Y_2 = train_test_split(X_label, Y_label, test_size= )
+
+    Reinforcement Learning - Learning past experiences, rewards or punishment, to take future actions 

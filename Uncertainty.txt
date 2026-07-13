@@ -1,0 +1,137 @@
+- Lecture Date: June 29-30
+- Projects: 2-3 working days
+- Link to lecture/video: https://video.cs50.io/D8RRq3TbtHU?screen=B8mmqm46G80&start=0
+- Link to slides/notes:  https://cs50.harvard.edu/ai/notes/2/   - codes for symbols and model check
+
+# Key idea
+    AI's Uncertainty
+
+For each idea, fill in:
+- Concept name:
+
+# Terms-
+
+    *Probability*- P(w), must be between and include 0 and 1
+        The sigma, summation, of it must =1
+        Probability might =same, not sum of probability
+
+    *Unconditional Probability*-
+        degree of belief in a proposition, w, in the absence of any other evidence
+
+    *Conditional Probability*-
+        degree of belief in a proposition, w, given some evidence that's revealed
+        P(a | b), a is what we want to be true, b is the evidence given
+        Calculation  -    P(a | b) =  P(a ^ b) / P(b)    interchangeable
+
+    *Random Variable*-
+        Variable with a domain of possible values it can be -
+            uses probability in determining the decision, uses <>, vector as in order
+
+    *Independence*- The knowledge of one event doesn't influence the probability of other events
+        Ex. P( a ^ b) = P(a)P(b)    not P(b | a)
+
+    *Joint Probability*-
+        Probability distribution of each possible combination from the random variables
+        aP(. , .) represents |  P(. | .) = P(., .) / p(.)
+        a uses as multiplier, if . + . doesn't == 1, then use a to multiply
+
+# Rules-
+
+    *Bayes' Rule*-
+
+        if  P(a ^ b) = P(a)P(b | a), and
+            P(a ^ b) = P(b)P(a | b)
+
+        then   P(a)P(b | a) = P(b)P(a | b)
+
+        which P(b | a) = P(b)P(a | b) / P(a)
+
+    *Negation*-
+
+        P(--| a) = 1 - P(a)
+
+    Inclusion-Exclusion*-
+
+        P(a v b) = P(a) + P(b) - P(a ^ b)
+
+    *Marginalization*-
+
+        P(a) = P(a, b) + P(a, --| b ), or
+        P(x= x_) = summation (j) P(Y= x_, Y=yj)
+
+    *Conditioning*-
+
+        P(a) = P(a|b)P(b) + P(a| --| b)p(--| b) or
+        P(x= x_) = summation (j) P(X= x_| Y=yj) P(Y=yj)
+
+# Bayesian Network-
+
+    Data structure that represents the *dependencies* among random variables
+        directed graph
+        each node is a random variable
+        arrow from x to y means x is a parent of y
+            P(X| parents(x))
+
+    Approximate Inference- Maximize the accuracy in time without producing exact inference
+
+        Sampling- Enumerating all possible variables and pick one
+            as process continue, we use each previous variable
+                prefer in using conditional
+                Rejects other variables, randomize
+
+        Likelihood Weighting-
+            Fix variables' values, so the process will skip it
+            From Bayesian Network, sample out from conditional probability
+            Weight sample by its likelihood, frequency
+
+**Variables could change**
+    - Simplify the assumptions for over-complicated and arduous variables
+    -
+# Markov Assumption/ Model
+
+    - assumption that current state depends on a finite fixed of previous state numbers, like only yesterday or last week
+      - With a starting distribution
+
+    Markov Chain- Sequence of random variables' distributions follow the Markov assumption
+        Contains hidden state, but resolve from observation
+
+    Hidden Markov Model- markov model with hidden states that generate some observation event
+
+    Sensor model/ emission probabilities- the state emits emission by observation
+
+    Sensor Markov assumption- evidence variable depends only the corresponding state
+
+    # Tasks-
+
+        Filtering- calculate distribution for current state from starting state
+        Prediction- From observation. calculate distribution for future state
+        smoothing- calculate distribution for past state from starting state
+        Most_likely_explanation- calculate most likely sequence from starting state
+
+# Inference
+
+    Query X- variable to compute
+    Evidence E: observed variables for event e
+    Hidden Y: Non-evidence, Non-Query variable
+    Goal: Calculate P(X| e)
+
+    ex.     P(Appointment| light, no)
+            = a P(Appointment, light, no)
+            = a[ P(Appointment, light, no, on time)
+              +  P(Appointment, light, no, delayed)]
+
+    P(X| e) = a P(X, e) = a summation(Y) P(X,e,y)
+    X= Query
+    e= evidence
+    y= ranges of hidden variables
+    a= normalizes the result to 1
+
+# Ideas/ code-
+
+    if P( a | b) can be calculated, then P(b | a) too
+    , == (and) or ^
+
+    Counter in count the number rapidly
+
+    ConditionalProbability([ [>1] ], previous_discrete_data)
+

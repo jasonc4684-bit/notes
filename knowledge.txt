@@ -1,0 +1,141 @@
+- Lecture Date: June 22-23
+- Projects: 2 working days
+- Link to lecture/video: https://cs50.harvard.edu/ai/weeks/1/
+- Link to slides/notes: https://cs50.harvard.edu/ai/notes/1/   - codes for symbols and model check
+
+Key idea
+    AI's Knowledge
+
+For each idea, fill in:
+- Concept name:
+
+Terms-
+
+    knowledge_based agents- agents that reason by operating on internal representations of knowledge
+        - Uses known information in producing conclusion/ information
+
+    Sentence- an assertion about the world in a knowledge representation language
+        such as Propositional Logic- statement about the world
+
+    Model- assigns a truth value, true or false, for possible world.
+
+    Knowledge base- a set of sentences concluded by knowledge-based agents
+
+    Entailment- a|= b,
+        Every possible world, if alpha == true, beta is true
+
+    Inference- the process of deriving new sentences from old ones
+
+    Knowledge engineering- the process in determining which symbols and logic to use and represent it logically
+
+    Clause- a disjunction/numerous thing "or"/ of literals, propositional/ or opposite symbols- (conjunction is "and")
+
+    Conjunctive normal form- logical sentence that is a conjunction of clauses
+
+Logical Connectives of computer's conclusion
+
+    Symbols- either true or false
+
+        --| not  is  opposite
+                Not \not raining\ will be raining
+
+        ^ is and   for more than one values
+                false and true returns false
+
+          (down) ^ is or, v
+                false or true returns true,
+                    only returns false when both are false
+
+             --> is implication / implies, if --> then
+                    if P, to be transfer, is false, Q, the statement stays True
+                    for true P to false Q, returns false
+
+                <--> is biconditional/ both direction
+                    such as if and only if
+                        returns true only both P and Q are the same
+
+Checking types-
+
+    Model Checking- to satisfy entailment
+                    enumerate/mention all possible models, which is less efficient
+                    if every model the KB is true, then KB entail a
+                    else KB does not entail a
+Inference Rules-
+
+    Modus Ponens-
+        Use a line, the top for knowledge and bottom for inference
+        if a-->b and given a is true, then inference to beta
+
+    And elimination-
+        same line, but if the top is a ^ b, if a is true, then b must also be true
+
+    Double negation elimination-
+        same line, but if the top is --|(--|a) or not not a, is just a
+
+    Implication elimination-
+        same line, a-->b, then it must be --| a or b
+
+    Biconditional elimination-
+        line, if a <--> b, then it must be  (a->b) and (b->a)
+
+    De Morgan's Law- turn "and" to "or" by distributing the "not",          or turn "or" to "and"
+        --| (a ^ b), then  --| a or --| b                                     --| a ^ --| b
+
+    Distributive property
+
+    conflict-
+        if there's 2 clauses, one's p and other's --| p, then it resolved and their other "or" must be true
+
+Theorem Proving-
+
+    inital state: starting knowledge base
+    actions- inference rules
+    transition model: new knowledge base after inference
+    goal test: check statement we're trying to prove
+    path cost function: number of steps in proof
+
+Conversion to CNF (conjunction normal form)-
+
+    eliminates biconditinals, turn a<-->b to (a-->b) ^ (b-->a)
+    eliminates implications, turn a-->b to --| a "or" b
+    move --| (not) by using De Morgan's Law
+    Use distributive law for v (or)
+        example-
+            (P V(or) Q) --> S
+            --| (P v Q) v S
+            (--| P ^ --| Q) v s
+            (--| P v s) ^ (--| Q v s)
+
+    Duplicated symbols will only appeared once, eliminate redundant (Q v W v E v E) is (Q v W v E )
+    If only two conflict clauses, p , --| p, then it is a false empty clause
+
+Resolution, trying to reach a contradiction-
+
+    Determining if KB entails a:
+    convert to KB ^ --| a to CNF
+    a loop continues if we can use resolution to produce new clause
+        if we produce an empty clause, it's false or a contradiction, then KB must entails a
+        else, no entailement
+
+First-Order Logic, more representation of knowledge-
+
+    constant and predicate, holds true or false for constant, symbol
+    predicate(constant)
+
+    2 quantifiers-
+        Universal Quantification- express true statements for all values    uses upsidedown A x
+            for all objects x, if x== something, then x != others
+
+        Existential Quantification- express at least one value holds true   uses backward E x
+            for one object x, it holds true for certain criterias eventually
+
+Clue-
+    Uses (down)^ to list all possible knowledge
+        for known value, use --| to exclude the knowledge from the check
+
+Logic puzzles-
+    if something -> soemthing, then something is --| some-else
+    elif something occupied something, some-else can't occupied that
+
+Some useful codes-
+    termcolor.cprint({(message)}, "(color)") for colored text

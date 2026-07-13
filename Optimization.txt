@@ -1,0 +1,160 @@
+- Lecture Date: June 7-8
+- Projects: 2 working days
+- Link to lecture/video: https://cs50.harvard.edu/ai/weeks/3/
+- Link to slides/notes:  https://cs50.harvard.edu/ai/notes/3/    - codes for symbols and model check
+
+# Key idea
+
+    AI's Optimization
+
+For each idea, fill in:
+- Concept name:
+
+# Terms-
+
+    Optimization - Choosing the best option from a set of options
+
+    Local Search - Maintain a single node and searches by moving to a neighboring node
+        Not care the path, but the solution/goal
+
+    Objective / cost function - OF for global maximum, where cost for global minimum
+
+    Hard-constraints must be satisfied in a correct solution, common for linear
+
+    soft constraints express some notion which solutions are preferred over others
+
+    unary constraints involving only one variable
+
+    binary constraints involving two variables
+
+    node consistency - all the values in a variable's domain satisfy the variable's unary constraints,
+                            remove a variable's possible values that 's not consistent with its constraints
+
+    arc consistency - all the values in a variable's domain satisfy the variable's binary constraints, edge connection
+        remove and use left-over X in satisfy Y domains, more spread across
+
+    Traveler Salesman Problem - minimize distance cost that still pass each houses
+
+    Maintaining arc-consistency enforced arc-consistency every time we make a new assignment-
+        calls AC-3 algorithms when we make a new assignment to X, start with (Y,X), where Y is a neighbor of X
+
+Hill Climbing Algorithm-
+
+    Hill Climbing - Start a state, change the state based on the value of neighboring state,
+        maintain if it's opposite with goal, else continue
+            Might potentially stopped by local maxima/ minima
+            Also stuck by flat local maxima/ minima / shoulder
+
+        Variant (but never create worse moves):
+            Steepest ascent - choose the highest-valued neighbor
+            Stochastic - choose randomly from higher-valued neighbors
+            First-Choice - choose the first higher-valued neighbors
+
+            Reduce being stuck (repeating):
+                random-restart - conduct hill climbing multiple times
+                local beam search - chooses the k highest-valued neighbors, starts more than 1 state
+
+    Hill Climbing function ex:
+
+        function hill_climbing (problem):
+            current = initial state, either pick or random
+            repeat:
+                neighbor = highest/lowest valued neighbor of current, random if both are equal
+                if neighbor not better than current:
+                    return current
+                current = neighbor
+
+Simulated Annealing-
+
+    more likely to accept opposite goal neighbor at beginning,
+    less likely later on
+
+    Simulated Annealing function ex:
+
+        function Simulated Annealing(problem, max):
+            current = initial state
+            for t=1 to max:
+                T = Temperature(t), the temperature is the likability
+                neighbor = random neighbor from current
+                E = how much better neighbor is than current
+                if E > 0"
+                    current = neighbor
+                with probability e^E/T set current = neighbor
+
+
+Linear Programming - real-life data values utilized to discover optimized solution, with bounds/ constraints
+
+    Ex. 2 different machines with different cost and resources used
+    2 potential approaches: Simplex and Interior_Point
+
+    3 main values for constraint satisfaction problem
+        variables, domains, and constraints
+
+    for Sudoku- variables are the empty cells, domains are number 1-9.
+                                    constraints are the numbers cant equal on same verti-hori lines and 9-cell boxes
+
+Arc consistency function-
+
+    Single arc-
+
+        function Revise (csp, X, Y): make X consistent to Y
+            revised = false
+            for x in X domain:
+                if no y in Y domain satisfy constraint for (X, Y):
+                    delete x from X domain
+                    revised = true
+            return revised
+
+    entire arc-
+
+        function AC-3(csp):
+            queue = all arcs in csp
+            while queue non-empty:
+                (X,Y) = Dequeue(queue)
+                if revised (csp, X, Y):
+                    if size of X domain ==0:
+                        return False
+                    for each Z in X neighbors - {Y}: except Y
+                        Enqueue(queue, (Z, X))
+            return True
+
+    CSPs as search problems-
+
+        initial state: empty assignment, no variable
+        actions: add a {variable = value} to assignment
+        transition model: shows how adding an assignment changes the assignment
+        goal test: check if all variables assigned and constraints al satisfied
+        path cost function: all paths have same cost
+
+Backtracking Search (revised) - csp is not in the parameter, failure = None
+
+    function Bt (assignment, csp):
+        if assignment complete: return assignment:
+        var = select_unassigned_var (assignment, csp)
+        for value in domain-values(var, assignment, csp) or []:
+            if value consistent with assignment:
+                add {var = value} to assignment     ( assignment[var] = value )
+                inferences = Inference (assignment, csp)
+                if inferences != failure: add inferences to assignment
+                result = Bt (assignment, csp)
+                if result doesn't fail:
+                    return result
+            remove {var = value} and inferences from assignment
+        return failure
+
+    Added heuristics for efficient-
+        select_unassigned_var()-
+            minimum remaining values (MRV) - select the variable that has the smallest domain
+        if MRV doesn't solved,
+            degree - select the variable that has the highest degree (constraints), eliminating more other variables' domains
+
+        domain-values():
+            least-constraining values: trying to ruled out neighboring variables' domains with fewest constraints
+                eliminates values quicker
+
+    import constraint , is from python itself
+        .addVariables( [] )
+        .addConstraint(lambda for rapid)
+        .getSolutions()
+
+
