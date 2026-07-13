@@ -1,2 +1,2 @@
-# notes
-cs50 AI notes
+# Notes
+CS50 AI notes for lectures
