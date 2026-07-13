@@ -77,3 +77,6 @@ For each idea, fill in:
         X_1, X_2, Y_1, Y_2 = train_test_split(X_label, Y_label, test_size= )
 
     Reinforcement Learning - Learning from past experiences, rewards | punishment, to take future actions
+
+        Agent will be at a state given by environment
+        when agent performs action, two outcomes: reward and punishment
