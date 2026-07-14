@@ -80,10 +80,17 @@ For each idea, fill in:
 
         Agent will be at a state given by environment
         when agent performs action, two outcomes: reward and punishment
-            Agent has no infomation at initial state
+            Agent has no information at initial state
 
         Markov decision process - model for decision-making, representing states, actions, and their rewards
             Set of states S 
             set of actions Actions(s)
             Transition model P(s' | s, a), probability at next state given current state and action
             Reward function R(s, a, s'), reward on this process
+
+    Q-Learning - estimate the reward from Q(s, a)
+
+        Q(s, a) = 0 for all s, a
+        When action taken and receive reward:
+            Estimate the value Q(s, a) based on current and expected future rewards
+            Update Q(s, a) with old estimate and new estimate
