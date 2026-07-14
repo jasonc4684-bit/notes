@@ -1,6 +1,6 @@
 - Lecture Date: June 12-13
 - Projects: 3-4 working days
-- Link to lecture/video: https://cs50.harvard.edu/ai/weeks/4/    -
+- Link to lecture/video: https://cs50.harvard.edu/ai/weeks/4/  
 - Link to slides/notes:  https://cs50.harvard.edu/ai/notes/4/    - codes (with scikit-learn) for symbols and model check
 
 # Key idea
@@ -12,52 +12,52 @@ For each idea, fill in:
 
 # Terms
 
-    Supervised Learning - given access to an input-output pair, learn a function to map inputs to outputs
+Supervised Learning - given access to an input-output pair, learn a function to map inputs to outputs
 
-        Classification - given input, mapping to a discrete category
+    Classification - given input, mapping to a discrete category
 
-            Such as a table with data,
-            which can be the function's parameters, f(C1, C2) or hw(w is the weight) (C1, C2) to hypothesize
+        Such as a table with data,
+        which can be the function's parameters, f(C1, C2) or hw(w is the weight) (C1, C2) to hypothesize
 
-                The weight for C1 and C2 will vary, and hypothesize,
-                    such as Rain if C0(some other factors) + W1C1 + W2C2 >= 0, else opposite
-                    or                  hw(x)            w * x >= 0
+            The weight for C1 and C2 will vary, and hypothesize,
+                such as Rain if C0(some other factors) + W1C1 + W2C2 >= 0, else opposite
+                or                  hw(x)            w * x >= 0
 
-                Perceptron Learning Rule/weight update - Wi = Wi + a(y - Hw(X)) + Xi ,
-                                                            a is learning rate, y - Hw(X) = actual value - estimate
+            Perceptron Learning Rule/weight update - Wi = Wi + a(y - Hw(X)) + Xi ,
+                                                        a is learning rate, y - Hw(X) = actual value - estimate
 
-                Threshold function (hard) - A certain part of the graph where the output will change suddenly from the dot product
-                    Only possible with two outputs: 0 and 1
+            Threshold function (hard) - A certain part of the graph where the output will change suddenly from the dot product
+                Only possible with two outputs: 0 and 1
 
-                Logistic function (soft) - A curved graph where the output changes by dot product, less absolute
-                    0 <= C <= 1
+            Logistic function (soft) - A curved graph where the output changes by dot product, less absolute
+                0 <= C <= 1
 
-                1. K-nearest-neighbor classification (variant k added) -
-                        Choose the category of the input based on the k-range most common knowledge table/info
+            1. K-nearest-neighbor classification (variant k added) -
+                    Choose the category of the input based on the k-range most common knowledge table/info
 
-                    Downside - slow in organizing and measuring data
+                Downside - slow in organizing and measuring data
 
-                2. Linear approach - a line separating two datasets, only for clean data
+            2. Linear approach - a line separating two datasets, only for clean data
 
-                3. Support Vector Machines - Utilizes a maximum margin separator, a boundary that maximizes the distance between data
-                    Such as a circle instead of a straight line
+            3. Support Vector Machines - Utilizes a maximum margin separator, a boundary that maximizes the distance between data
+                Such as a circle instead of a straight line
 
 
-        Regression - given input, mapping continuous value/output
+    Regression - given input, mapping continuous value/output
 
-            ex. f(advertising) = 6000 profits
-                h(advertising) the profits from different advertising value
+        ex. f(advertising) = 6000 profits
+            h(advertising) the profits from different advertising value
 
-            Loss function - expresses how poorly our hypothesis performs
+        Loss function - expresses how poorly our hypothesis performs
 
-                0-1 loss function -
-                    L(actual, predicted) = 0 if actual = predicted, 1 otherwise
+            0-1 loss function -
+                L(actual, predicted) = 0 if actual = predicted, 1 otherwise
 
-                L1 loss function -
-                    L(actual, predicted) = |actual - predicted|
+            L1 loss function -
+                L(actual, predicted) = |actual - predicted|
 
-                L2 loss function -
-                    L(actual, predicted) = (actual - predicted)^2 , more harsh and penalizes
+            L2 loss function -
+                L(actual, predicted) = (actual - predicted)^2 , more harsh and penalizes
 
 
 
@@ -108,3 +108,8 @@ For each idea, fill in:
                 e-greedy - set e to random move frequency
                 with probability 1 - e , choose estimated best move
                 with probability e, choose random move
+
+Unsupervised Learning - given input data without any feedback, but still would learn patterns 
+
+    Clustering 
+        organizing objects into groups in a way that similar objects tend to be in 
