@@ -101,3 +101,8 @@ For each idea, fill in:
 
         Explore vs. Exploit
             Exploring additional routes|solutions to reach the goal, while vs. exploiting known route and continue
+
+            Potential solutions
+                e-greedy - set e to random move frequency
+                with probability 1 - e , choose estimated best move
+                with probability e, choose random move
