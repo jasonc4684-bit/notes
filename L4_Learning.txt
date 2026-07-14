@@ -96,4 +96,8 @@ For each idea, fill in:
             Update Q(s, a) with old estimate and new estimate
 
             Q(s,a ) <- Q(s, a) + a(new_estimate - old estimate)  a controls the importance of new information
-                                    r + future r      Q(s, a)      future r (reward) = Max a' Q(s', a')
+                                    r + future r      Q(s, a)      future r (reward) = y Max a' Q(s', a')  y=rate
+                                                                           Greedy decision-making
+
+        Explore vs. Exploit
+            Exploring additional routes|solutions to reach the goal, while vs. exploiting known route and continue
