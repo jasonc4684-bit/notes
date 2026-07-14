@@ -109,7 +109,14 @@ Supervised Learning - given access to an input-output pair, learn a function to 
                 with probability 1 - e , choose estimated best move
                 with probability e, choose random move
 
-Unsupervised Learning - given input data without any feedback, but still would learn patterns 
+Unsupervised Learning - given input data without any feedback or label, but still would learn patterns 
 
     Clustering 
         organizing objects into groups in a way that similar objects tend to be in 
+
+        k-means clustering
+            First with k clusters, repeatedly updating data points' centers and points, forming groups
+                clusters move to the center of its grouped points
+                if some points were far from its original cluster and closer to others, 
+                    those points will become the nearest cluster's points
+
