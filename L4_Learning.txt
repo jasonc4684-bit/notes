@@ -99,6 +99,8 @@ For each idea, fill in:
                                     r + future r      Q(s, a)      future r (reward) = y Max a' Q(s', a')  y=rate
                                                                            Greedy decision-making
 
+        function approximation - now explore all of the possible states, approximate from previous similar states
+
         Explore vs. Exploit
             Exploring additional routes|solutions to reach the goal, while vs. exploiting known route and continue
 
