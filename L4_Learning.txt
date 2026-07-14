@@ -76,17 +76,17 @@ Supervised Learning - given access to an input-output pair, learn a function to 
         .predict() to test
         X_1, X_2, Y_1, Y_2 = train_test_split(X_label, Y_label, test_size= )
 
-    Reinforcement Learning - Learning from past experiences, rewards | punishment, to take future actions
+Reinforcement Learning - Learning from past experiences, rewards | punishment, to take future actions
 
-        Agent will be at a state given by environment
-        when agent performs action, two outcomes: reward and punishment
-            Agent has no information at initial state
+    Agent will be at a state given by environment
+    when agent performs action, two outcomes: reward and punishment
+        Agent has no information at initial state
 
-        Markov decision process - model for decision-making, representing states, actions, and their rewards
-            Set of states S 
-            set of actions Actions(s)
-            Transition model P(s' | s, a), probability at next state given current state and action
-            Reward function R(s, a, s'), reward on this process
+    Markov decision process - model for decision-making, representing states, actions, and their rewards
+        Set of states S 
+        set of actions Actions(s)
+        Transition model P(s' | s, a), probability at next state given current state and action
+        Reward function R(s, a, s'), reward on this process
 
     Q-Learning - estimate the reward from Q(s, a)
 
@@ -95,19 +95,19 @@ Supervised Learning - given access to an input-output pair, learn a function to 
             Estimate the value Q(s, a) based on current and expected future rewards
             Update Q(s, a) with old estimate and new estimate
 
-            Q(s,a ) <- Q(s, a) + a(new_estimate - old estimate)  a controls the importance of new information
-                                    r + future r      Q(s, a)      future r (reward) = y Max a' Q(s', a')  y=rate
-                                                                           Greedy decision-making
+        Q(s,a ) <- Q(s, a) + a(new_estimate - old estimate)  a controls the importance of new information
+                                r + future r      Q(s, a)      future r (reward) = y Max a' Q(s', a')  y=rate
+                                                                Greedy decision-making
 
-        function approximation - now explore all of the possible states, approximate from previous similar states
+    function approximation - now explore all of the possible states, approximate from previous similar states
 
-        Explore vs. Exploit
-            Exploring additional routes|solutions to reach the goal, while vs. exploiting known route and continue
+    Explore vs. Exploit
+        Exploring additional routes|solutions to reach the goal, while vs. exploiting known route and continue
 
-            Potential solutions
-                e-greedy - set e to random move frequency
-                with probability 1 - e , choose estimated best move
-                with probability e, choose random move
+        Potential solutions
+            e-greedy - set e to random move frequency
+            with probability 1 - e , choose estimated best move
+            with probability e, choose random move
 
 Unsupervised Learning - given input data without any feedback or label, but still would learn patterns 
 
