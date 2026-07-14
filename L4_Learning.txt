@@ -91,6 +91,9 @@ For each idea, fill in:
     Q-Learning - estimate the reward from Q(s, a)
 
         Q(s, a) = 0 for all s, a
-        When action taken and receive reward:
+        When action a taken in state s and receive reward r:
             Estimate the value Q(s, a) based on current and expected future rewards
             Update Q(s, a) with old estimate and new estimate
+
+            Q(s,a ) <- Q(s, a) + a(new_estimate - old estimate)  a controls the importance of new information
+                                    r + future r      Q(s, a)      future r (reward) = Max a' Q(s', a')
